@@ -1,11 +1,6 @@
 import Foundation
 import UIKit
 
-public enum NetworkError: Error {
-    case invalidURL
-    case invalidData
-}
-
 public protocol WebServiceProviding {
     func fetchStories() async -> Result<Data, NetworkError>
 }
@@ -20,6 +15,11 @@ public class WebServiceProvider: WebServiceProviding {
         
         return await getRequest(withURL: storiesURL)
     }
+}
+
+public enum NetworkError: Error {
+    case invalidURL
+    case invalidData
 }
 
 fileprivate extension WebServiceProvider {
